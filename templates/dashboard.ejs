@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="public/css/dashboard.css">
+    <title>Task management dashboard</title>
+</head>
+<body>
+    <div class="taskManager">
+        <div class="navBar">
+            <div class="upperPart">
+                <div class="actions">
+                  <div class="circle"></div>
+                  <div class="circle-2"></div>
+                </div>
+              </div>
+            <div class="leftContent">
+                <ul class="actionList">
+                    <li class="item">
+                        <img src="public/svg/about.png" alt="USER" class="image">
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <%= users.name%></span>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="pageContent">
+            <div class="header">Task Details</div>
+            <form action="/logout" method="get" class = "logout">
+                <button type="submit" class="bttn"> 
+                    <img src="public/svg/logout.png" alt="LOGOUT" height="25px">&nbsp;Logout
+                </button>
+            </form>
+            <table class="styled-table">
+             <thead>
+                <tr>
+                <th>
+                    Task Title
+                </th>
+                <th>
+                    Task Description
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    Action
+                </th>
+                </tr>
+             </thead>
+             <tbody>
+            <% for (var j =0; j < users.tasks.length;  j++ ) { %>
+                <tr><td><%= users.tasks[j].title%></td>
+                    <td><%= users.tasks[j].description%></td>
+                    <td><%= users.tasks[j].status%></td>
+                    <td><form action="" method="">
+                        <button type="submit" class="edit" title="EDIT" id="">
+                        <img src="public/svg/pen.png" alt="Edit" height="15px"></button></form></td>
+                </tr>
+            <% } %>
+             </tbody>
+            </table>
+
+        </div>
+    </div>
+</body>
+</html>

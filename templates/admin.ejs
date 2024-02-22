@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="public/css/admin.css"> 
+    <title>Task management dashboard</title>
+</head>
+<body>
+    <div class="taskManager">
+        <div class="navBar">
+            <div class="upperPart">
+                <div class="actions">
+                  <div class="circle"></div>
+                  <div class="circle-2"></div>
+                </div>
+              </div>
+            <div class="leftContent">
+                <div class="actionList">
+                    <div class="item">
+                        <!-- <span><%= name %></span> -->
+                    </div>
+                    <!-- <div class="label-wrapper">
+                        <input type="radio" class="rdbtn"  id="opt1">
+                        <label for="opt1" class="category"></label>
+                    </div> -->
+                    <!-- <div> <%= users.length%> </div> -->                  
+                    <% for (var i =0; i < users.length;  i++ ) { %>
+                        <br/>                         
+                        <form action="/<%= users[i]._id%>" method="post" class = "user">
+                            <button type="submit" class="bton" id="<%= users[i]._id%>"><%= users[i].name%>
+                            </button>
+                        </form>                  
+                            <!-- <% for (let task of users[i].tasks) { %>
+                                <li style="padding-left: 10px;"><%= task.title %> </li>
+                            <% } %>
+                        </ul> -->
+                    <% } %>
+                </div>
+            </div>
+            <div class="bottomContent">
+                <button type="button" class="addNewUser" onclick="openForm()">Add New User</button>
+                <div class="form-popup" id="myForm">
+                    <form action="/admin" method="post" class="form-container">
+                      <h1>Add New User</h1>
+                      <label for="userId"><b>User ID</b></label>
+                      <input type="text" placeholder="Enter user ID" name="name" class="userId" required>
+                      <label for="psw"><b>Password</b></label>
+                      <input type="password" placeholder="Enter password" name="password" class="psw" required>
+                      <button type="submit" class="btn">Add User</button>
+                      <button type="button" class="cancel" onclick="closeForm()">Close</button>
+                    </form>
+                  </div>
+            </div>
+        </div>
+        <div class="pageContent">
+            <form action="/logout" method="get" class = "logout">
+                <button type="submit" class="bttn"> 
+                    <img src="public/svg/logout.png" alt="LOGOUT" height="25px">&nbsp;Logout
+                </button>
+            </form>
+            <div class="header">Tasks</div>
+
+                <table class="styled-table">
+                 <thead>
+                    <tr>
+                    <th>
+                        Task Title
+                    </th>
+                    <th>
+                        Task Description
+                    </th>
+                    <th>
+                        Assigned User
+                    </th>
+                    <th>Status</th>
+                    </tr>
+                 </thead>
+                 <tbody>
+                    <% for (var j =0; j < tasks.length;  j++ ) { %>
+                        <tr><td><%= tasks[j].title%></td>
+                            <td><%= tasks[j].description%></td>
+                            <td> 
+                                <% for (let user of tasks[j].users) { %>
+                                    <%= user.name %> 
+                                <% } %>
+                            </td>
+                            <td><%= tasks[j].status%></td>
+                        </tr>
+                    <% } %>
+                 </tbody>
+                </table>
+                <button id="popup" onclick="div_show()">Add New Task</button>
+                <div id="abc">
+                <div id="popupAdd">
+                <form action="/task" id="form" method="post" class="newTask">
+                    <!-- <label id="close" onclick ="div_hide()" title="close">×</label> -->
+                    <img id="close" src="public/svg/close.png" onclick ="div_hide()">
+                <h2>ADD TASK</h2>
+                <hr>
+                <input type="text" name="taskt" id="taskt" placeholder="Add Task Title" required>
+                <textarea id="taskd" name="taskd" placeholder="Add Task Description..."></textarea>
+                <input type="text" name="user" id="user" placeholder="Assign User" >
+                <button type="submit" class="addNewTask">Add Task</button>
+                </form>
+                </div>
+                <!-- Popup Div Ends Here -->
+                </div>
+            <!-- </div> -->
+        </div>
+    </div>
+    <script>
+        function openForm() {
+          document.getElementById("myForm").style.display = "block";
+        }
+        function closeForm() {
+          document.getElementById("myForm").style.display = "none";
+        }
+
+        function div_show() {
+            document.getElementById('abc').style.display = "block";
+        }
+        function div_hide(){
+            document.getElementById('abc').style.display = "none";
+        }
+        </script>
+</body>
+</html>

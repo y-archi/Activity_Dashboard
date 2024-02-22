@@ -1,0 +1,76 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(to right,#155799, #159957);
+    color: whitesmoke;
+}
+form{
+    width: 35rem;
+    margin: auto;
+    color: whitesmoke;
+    backdrop-filter: blur(16px) saturate(180%);
+    background-color:rgba(11, 15, 13, 0.582);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);;
+}
+input[type=text], input[type=password]{
+    width: 100%;
+    margin: 10px 0;
+    border-radius: 5px;
+    padding: 15px 18px;
+}
+button{
+    background-color: #030804;
+    color: white;
+    padding: 14px 20px;
+    border-radius: 5px;
+    margin: 7px 0;
+    width: 100%;
+    font-size: 18px;
+}
+button:hover{
+    opacity: 0.6;
+    cursor: pointer;
+}
+.headingsContainer{
+    text-align: center;
+}
+.mainContainer{
+    padding: 1rem;
+}
+.subContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.subcontainer a{
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+.forgotpsd a {
+    float: right;
+    padding-top: 16px;
+    color: rgb(74, 146, 235);
+    text-decoration: none;
+}
+  .newUser{
+    color: white;
+    text-align: center;
+}
+  .newUser a{
+    color: rgb(74, 146, 235);
+    text-decoration: none;
+}
+  @media screen and (max-width: 600px) {
+    form{
+      width: 25rem;
+    }
+}
+  @media screen and (max-width: 400px) {
+    form{
+      width: 20rem;
+    }
+}
